@@ -2,18 +2,36 @@
   <div id="app">
     <img alt="Giphy logo" src="./assets/logo.png" class="App-logo" />
     <div class="Search-container">
-      <input />
-      <button>Buscar</button>
+      <input v-model="keyword" placeholder="Teclea algo..."/>
+      <button v-on:click="handleClick">Buscar</button>
     </div>
     <GifsGrid msg="Welcome IntiDev" />
   </div>
 </template>
 
 <script>
+import Vue from 'vue';
 import GifsGrid from "./components/GifsGrid.vue";
 
 export default {
   name: "App",
+  data() {
+    return {
+      keyword: ''
+    }
+  },
+  methods: {
+    handleClick: function () {
+      console.log(this.keyword);
+      let url = "http://api.giphy.com/v1/gifs/search?api_key=XW1HTpw6EWg9S4z8EYwbMoBy1lUOfc5o&limit=5&q="+this.keyword;
+      fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.data);
+      })
+      .catch((error) => console.error(error));
+    }
+  },
   components: {
     GifsGrid,
   },

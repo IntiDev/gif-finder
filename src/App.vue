@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import Vue from 'vue';
 import GifsGrid from "./components/GifsGrid.vue";
 
 export default {

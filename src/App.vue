@@ -6,7 +6,7 @@
       <button v-on:click="handleClick">Buscar</button>
     </div>
     <GifsGrid
-      :keyword="keyword"
+      :keyword="filter"
       :arrayGifs="arrayGifs"
       :searching="searching"
     />
@@ -22,18 +22,22 @@ export default {
   data() {
     return {
       keyword: null,
+      filter: "",
       arrayGifs: [],
       searching: false,
     }
   },
   methods: {
     handleClick: function () {
+      this.searching = false;
       let url = "http://api.giphy.com/v1/gifs/search?api_key=XW1HTpw6EWg9S4z8EYwbMoBy1lUOfc5o&limit=5&q="+this.keyword;
+      this.filter = this.keyword;
       fetch(url)
       .then((response) => response.json())
       .then((data) => {
         this.arrayGifs = data.data;
         this.searching = true;
+        this.keyword = "";
       })
       .catch((error) => console.error(error));
     }

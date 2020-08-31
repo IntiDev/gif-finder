@@ -9,7 +9,7 @@
     </div>
   </section>
   <p v-else-if="searching === true && arrayGifs.length === 0" >
-    No se encontraron resultados :(
+    No se encontraron resultados para <strong>{{ keyword }}</strong>
   </p>
 </template>
 

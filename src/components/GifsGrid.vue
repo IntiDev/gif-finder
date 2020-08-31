@@ -1,6 +1,6 @@
 <template>
   <div class="Grid-container">
-    <h1>{{ msg }}</h1>
+    <p v-if="msg !== ''"> Resultados para {{ msg }}</p>
   </div>
 </template>
 
@@ -8,10 +8,14 @@
 export default {
   name: 'GifsGrid',
   props: {
-    msg: String
+    msg: String,
+    arrayGifs: Array
   }
 }
 </script>
 
 <style scoped>
+p {
+  font-size: 1rem;
+}
 </style>

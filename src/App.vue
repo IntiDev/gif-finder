@@ -5,7 +5,10 @@
       <input v-model="keyword" placeholder="Teclea algo..."/>
       <button v-on:click="handleClick">Buscar</button>
     </div>
-    <GifsGrid msg="Welcome IntiDev" />
+    <GifsGrid
+      :msg="keyword"
+      :arrayGifs="arrayGifs"
+    />
   </div>
 </template>
 
@@ -17,7 +20,8 @@ export default {
   name: "App",
   data() {
     return {
-      keyword: ''
+      keyword: '',
+      arrayGifs: []
     }
   },
   methods: {
@@ -28,8 +32,10 @@ export default {
       .then((response) => response.json())
       .then((data) => {
         console.log(data.data);
+        arrayGifs = data.data;
       })
       .catch((error) => console.error(error));
+      keyword = '';
     }
   },
   components: {

@@ -29,7 +29,7 @@ export default {
   methods: {
     handleClick: function () {
       this.searching = false;
-      let url = "http://api.giphy.com/v1/gifs/search?api_key=aL7tPpGfA3kJWW1SRLjbodjNWRNBwNcb&limit=5&q="+this.keyword;
+      let url = "http://api.giphy.com/v1/gifs/search?api_key=Fv0qVqTBwlIwSdGbVBtkReYJASvlVX3G&limit=5&q="+this.keyword;
       this.filter = this.keyword;
       fetch(url)
       .then((response) => response.json())

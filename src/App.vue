@@ -47,7 +47,7 @@ export default {
 <style>
 body {
   background-color: #f8f8f9;
-  display: grid;
+  margin: 0;
 }
 
 #app {

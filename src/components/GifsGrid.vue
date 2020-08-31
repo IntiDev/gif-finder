@@ -1,41 +1,21 @@
 <template>
-  <section class="Grid-container">
-    <p v-if="msg !== ''">Resultados para {{ msg }}</p>
+  <section class="Grid-container" v-if="arrayGifs.length > 0" >
+    <p>Resultados para {{ msg }}</p>
     <div class="Grid-items-container">
-      <div class="Grid-item">
+      <div class="Grid-item" v-for="gif in arrayGifs" :key="gif.id">
         <img
-        src="https://media2.giphy.com/media/S9RUTgRxiFVEpOQ4jW/giphy.gif?cid=ddf33540fp5qn5nx2ms5msu5rvin8iv9y2678c8armq5w8mh&rid=giphy.gif"
-      />
-      </div>
-
-      <div class="Grid-item">
-        <img
-        src="https://media2.giphy.com/media/S9RUTgRxiFVEpOQ4jW/giphy.gif?cid=ddf33540fp5qn5nx2ms5msu5rvin8iv9y2678c8armq5w8mh&rid=giphy.gif"
-      />
-      </div>
-
-      <div class="Grid-item">
-        <img
-        src="https://media2.giphy.com/media/S9RUTgRxiFVEpOQ4jW/giphy.gif?cid=ddf33540fp5qn5nx2ms5msu5rvin8iv9y2678c8armq5w8mh&rid=giphy.gif"
-      />
-      </div>
-
-      <div class="Grid-item">
-        <img
-        src="https://media2.giphy.com/media/S9RUTgRxiFVEpOQ4jW/giphy.gif?cid=ddf33540fp5qn5nx2ms5msu5rvin8iv9y2678c8armq5w8mh&rid=giphy.gif"
-      />
-      </div>
-
-      <div class="Grid-item">
-        <img
-        src="https://media2.giphy.com/media/S9RUTgRxiFVEpOQ4jW/giphy.gif?cid=ddf33540fp5qn5nx2ms5msu5rvin8iv9y2678c8armq5w8mh&rid=giphy.gif"
-      />
+          :src="gif.images.downsized_medium.url"
+        />
       </div>
     </div>
   </section>
+  <p v-else-if="arrayGifs.length === 0" >
+    No se encontraron resultados, intente nuevamente
+  </p>
 </template>
 
 <script>
+
 export default {
   name: "GifsGrid",
   props: {
@@ -48,6 +28,7 @@ export default {
 <style scoped>
 p {
   font-size: 1rem;
+  margin-top: 25px;
 }
 
 .Grid-items-container {

@@ -1,6 +1,5 @@
 <template>
   <section class="Grid-container" v-if="arrayGifs.length > 0" >
-    <p>Resultados para {{ msg }}</p>
     <div class="Grid-items-container">
       <div class="Grid-item" v-for="gif in arrayGifs" :key="gif.id">
         <img
@@ -9,8 +8,8 @@
       </div>
     </div>
   </section>
-  <p v-else-if="arrayGifs.length === 0" >
-    No se encontraron resultados, intente nuevamente
+  <p v-else-if="searching === true && arrayGifs.length === 0" >
+    No se encontraron resultados :(
   </p>
 </template>
 
@@ -19,8 +18,9 @@
 export default {
   name: "GifsGrid",
   props: {
-    msg: String,
+    keyword: String,
     arrayGifs: Array,
+    searching: Boolean,
   },
 };
 </script>

@@ -6,8 +6,9 @@
       <button v-on:click="handleClick">Buscar</button>
     </div>
     <GifsGrid
-      :msg="keyword"
+      :keyword="keyword"
       :arrayGifs="arrayGifs"
+      :searching="searching"
     />
   </div>
 </template>
@@ -20,8 +21,9 @@ export default {
   name: "App",
   data() {
     return {
-      keyword: '',
-      arrayGifs: []
+      keyword: null,
+      arrayGifs: [],
+      searching: false,
     }
   },
   methods: {
@@ -30,8 +32,8 @@ export default {
       fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.data);
         this.arrayGifs = data.data;
+        this.searching = true;
       })
       .catch((error) => console.error(error));
     }
